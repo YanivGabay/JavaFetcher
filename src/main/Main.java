@@ -2,6 +2,8 @@ package main;
 
 import threadpool.ThreadPool;
 import urlprocessor.UrlProcessor;
+import fetcher.FetcherFactory;
+import fetcher.Fetcher;
 
 public class Main {
 
@@ -16,6 +18,11 @@ public class Main {
         try {
             int poolSize = parsePoolSize(args[1]);
             String inputFilePath = args[2];
+
+
+            FetcherFactory factory = new FetcherFactory();
+            String contentTypeImage = "image/png";
+            Fetcher imageFetcher = factory.createFetcher(contentTypeImage);
 
             // Initialize URL Processor
             UrlProcessor urlProcessor = new UrlProcessor(inputFilePath);
