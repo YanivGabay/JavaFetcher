@@ -5,10 +5,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ImageFetcher implements Fetcher {
-
+    private long startTime;
     @Override
     public FetchResult fetch(String urlString) {
         try {
+            startTime = System.nanoTime();
             URL url = new URL(urlString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -41,8 +42,10 @@ public class ImageFetcher implements Fetcher {
         int responseCode = connection.getResponseCode();
         if (responseCode == HttpURLConnection.HTTP_OK) {
             // Measure response time, handle content length and MIME type
-            long responseTime = 0; // Implement this
-            return new FetchResult(urlString, connection.getContentLengthLong(), responseTime, connection.getContentType(), true, null);
+            long elapsedNano = System.nanoTime() - startTime;
+            long elapsedMillis = elapsedNano / 1_000_000;
+           // Implement this
+            return new FetchResult(urlString, connection.getContentLengthLong(), elapsedMillis, connection.getContentType(), true, null);
         } else {
             return new FetchResult(urlString, -1, -1, null, false, "Non-OK HTTP response: " + responseCode);
         }
