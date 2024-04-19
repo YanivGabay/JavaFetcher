@@ -42,12 +42,14 @@ public class Runner {
         manager.fetchUrls(urls, imageFetcher);
 
         OutputFormatter formatter = FormatterFactory.createFormatter(commandsGiven);
-        
-        FetchResult[] orderedResults = manager.getOrderedResults();
+
+        List<FetchResult> orderedResults = manager.getOrderedResults();
         // Format each result using the composite formatter
+        int index = 0;
         for (FetchResult result : orderedResults) {
-            if (result != null) { // Ensure the result is not null before formatting
-                System.out.println(formatter.format(result));
+
+            if (result != null && result.isSuccess()) {
+                System.out.println("Output for index " + index++ + ": " + formatter.format(result));
             }
         }
     }

@@ -39,6 +39,8 @@ public class FetchResult {
         return success;
     }
 
+    public String getSuccess() { return this.isSuccess() ? "success" : "failure"; }
+
     public String getErrorMessage() {
         return errorMessage;
     }

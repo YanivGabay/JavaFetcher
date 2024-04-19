@@ -9,6 +9,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
+
+
+
 public class UrlFetcherManager {
     private final ThreadPool threadPool;
     private final Map<Integer, FetchResult> resultsMap; // Use LinkedHashMap for maintaining order
@@ -25,7 +28,8 @@ public class UrlFetcherManager {
             threadPool.execute(() -> {
                 FetchResult result = fetcher.fetch(url);
                 synchronized (resultsMap) {
-                    resultsMap.put(index, result); // Synchronize writes to ensure thread safety
+                    resultsMap.put(index, result);
+                    System.out.println("Result stored for URL at index " + index + " status: " + result.getSuccess() );// Synchronize writes to ensure thread safety
                 }
             });
         }

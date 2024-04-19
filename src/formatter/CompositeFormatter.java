@@ -15,7 +15,8 @@ public class CompositeFormatter implements OutputFormatter {
     public String format(FetchResult result) {
         StringBuilder sb = new StringBuilder();
         for (OutputFormatter formatter : formatters) {
-            sb.append(formatter.format(result)).append(" ");
+
+               sb.append(formatter.format(result)).append(" ");
         }
         return sb.toString().trim(); // Removes the trailing space
     }
