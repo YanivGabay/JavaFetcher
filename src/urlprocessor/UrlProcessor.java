@@ -3,14 +3,14 @@ package urlprocessor;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UrlProcessor {
-    private Set<String> urls;
+    private List<String> urls;
 
     public UrlProcessor(String inputFilePath) {
-        this.urls = new HashSet<>();
+        this.urls = new ArrayList<>();
         loadUrls(inputFilePath);
     }
 
@@ -23,7 +23,7 @@ public class UrlProcessor {
         }
     }
 
-    public Set<String> getUrls() {
+    public List<String> getUrls() {
         return urls;
     }
 }
