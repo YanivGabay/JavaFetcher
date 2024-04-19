@@ -3,11 +3,13 @@ package main;
 import validator.InputValidator;
 import runner.Runner;
 import validator.ValidatorExceptions;
+
+/**
+ * The main class responsible for starting the program.
+ */
 public class Main {
 
     public static void main(String[] args) {
-
-
         try {
             InputValidator validator = new InputValidator();
             validator.validate(args); // This will throw ValidatorExceptions if validation fails
@@ -22,5 +24,4 @@ public class Main {
             System.exit(1); // Exit with a non-zero status to indicate error
         }
     }
-
 }

@@ -9,8 +9,17 @@ import fetcher.FetcherFactory;
 import java.util.List;
 import urlprocessor.UrlProcessor;
 import manager.UrlFetcherManager;
-public class Runner { 
 
+/**
+ * The class responsible for starting the program execution.
+ */
+public class Runner {
+
+    /**
+     * Starts the program with the given arguments.
+     *
+     * @param args The command-line arguments.
+     */
     public static void startProgram(String[] args) {
         //args[0] should be equal to the output commands
         // for example: su, tms.
@@ -32,11 +41,9 @@ public class Runner {
         UrlProcessor processor = new UrlProcessor(filePath);
         List<String> urls = processor.getUrls();
 
-
         FetcherFactory factory = new FetcherFactory();
         String contentTypeImage = "image/png";
         Fetcher imageFetcher = factory.createFetcher(contentTypeImage);
-
 
         UrlFetcherManager manager = new UrlFetcherManager(poolSize);
         manager.fetchUrls(urls, imageFetcher);
@@ -47,7 +54,6 @@ public class Runner {
         // Format each result using the composite formatter
         int index = 0;
         for (FetchResult result : orderedResults) {
-
             if (result != null && result.isSuccess()) {
                 System.out.println("Output for index " + index++ + ": " + formatter.format(result));
             }

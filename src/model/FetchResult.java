@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Represents the result of fetching a URL.
+ */
 public class FetchResult {
     private final String url;
     private final long size; // In bytes
@@ -39,7 +42,14 @@ public class FetchResult {
         return success;
     }
 
-    public String getSuccess() { return this.isSuccess() ? "success" : "failure"; }
+    /**
+     * Returns a string representation of the success status.
+     *
+     * @return "success" if the fetch was successful, "failure" otherwise.
+     */
+    public String getSuccess() {
+        return this.isSuccess() ? "success" : "failure";
+    }
 
     public String getErrorMessage() {
         return errorMessage;

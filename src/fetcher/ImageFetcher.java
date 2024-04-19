@@ -8,6 +8,13 @@ import java.net.URL;
  */
 public class ImageFetcher implements Fetcher {
     private long startTime;
+
+    /**
+     * Fetches content from the given URL.
+     *
+     * @param urlString The URL to fetch content from.
+     * @return The result of the fetch operation.
+     */
     @Override
     public FetchResult fetch(String urlString) {
         try {
