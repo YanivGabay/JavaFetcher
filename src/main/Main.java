@@ -11,7 +11,7 @@ public class Main {
         try {
             InputValidator validator = new InputValidator();
             validator.validate(args); // This will throw ValidatorExceptions if validation fails
-            Runner.startProg(args); // Proceed if validation is successful
+            Runner.startProgram(args); // Proceed if validation is successful
         } catch (ValidatorExceptions exc) {
             // Catching specific validation exceptions
             System.err.println("Validation failed: " + exc.getMessage());
