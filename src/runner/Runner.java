@@ -43,7 +43,7 @@ public class Runner {
 
         OutputFormatter formatter = FormatterFactory.createFormatter(commandsGiven);
         
-        FetchResult[] orderedResults = manager.getOrderedResults(urls.size());
+        FetchResult[] orderedResults = manager.getOrderedResults();
         // Format each result using the composite formatter
         for (FetchResult result : orderedResults) {
             if (result != null) { // Ensure the result is not null before formatting

@@ -1,21 +1,21 @@
 package manager;
 
 import fetcher.Fetcher;
-import fetcher.ImageFetcher; // Assuming this is your implementation
 import model.FetchResult;
-
 import threadpool.ThreadPool;
 
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-
+import java.util.Map;
+import java.util.ArrayList;
 public class UrlFetcherManager {
     private final ThreadPool threadPool;
-    private final ConcurrentHashMap<Integer, FetchResult> resultsMap;
+    private final Map<Integer, FetchResult> resultsMap; // Use LinkedHashMap for maintaining order
 
     public UrlFetcherManager(int poolSize) {
         this.threadPool = new ThreadPool(poolSize);
-        this.resultsMap = new ConcurrentHashMap<>();
+        this.resultsMap = Collections.synchronizedMap(new LinkedHashMap<>()); // Synchronize the LinkedHashMap
     }
 
     public void fetchUrls(List<String> urls, Fetcher fetcher) {
@@ -24,15 +24,18 @@ public class UrlFetcherManager {
             final String url = urls.get(index);
             threadPool.execute(() -> {
                 FetchResult result = fetcher.fetch(url);
-                resultsMap.put(index, result);
+                synchronized (resultsMap) {
+                    resultsMap.put(index, result); // Synchronize writes to ensure thread safety
+                }
             });
         }
         threadPool.shutdown();
+
     }
 
-    public FetchResult[] getOrderedResults(int size) {
-        FetchResult[] results = new FetchResult[size];
-        resultsMap.forEach((key, value) -> results[key] = value);
-        return results;
+    public List<FetchResult> getOrderedResults() {
+        synchronized (resultsMap) {
+            return new ArrayList<>(resultsMap.values()); // Convert values to a list to maintain order
+        }
     }
 }
