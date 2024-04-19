@@ -9,7 +9,7 @@ import fetcher.FetcherFactory;
 import java.util.List;
 import urlprocessor.UrlProcessor;
 import manager.UrlFetcherManager;
-public class Runner {
+public class Runner { 
 
     public static void startProgram(String[] args) {
         //args[0] should be equal to the output commands
