@@ -10,7 +10,13 @@ public class InputValidator {
     public InputValidator() {
         // Initialize validation rules
         addValidationRule(args -> args != null && args.length > 0, "Arguments cannot be null or empty.");
-        addValidationRule(args -> args.length != 3,"Must have only 3 arguments");
+
+        addValidationRule(args -> {
+            int numOfArgs = args.length;
+            System.out.println("Number of arguments received: " + numOfArgs);
+            return numOfArgs == ValidatorsOptions.getArgSize();
+        }, "Must have only 3 arguments.");
+
         addValidationRule(args -> isIntegerInRange(args[1]), "The second argument must be an integer between 1 and 199.");
 
         // Add more rules as needed
