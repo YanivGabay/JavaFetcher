@@ -10,6 +10,7 @@ import java.util.List;
 import urlprocessor.UrlProcessor;
 import manager.UrlFetcherManager;
 
+
 /**
  * The class responsible for starting the program execution.
  */

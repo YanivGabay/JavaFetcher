@@ -38,15 +38,26 @@ public class UrlFetcherManager {
             final int index = i;
             final String url = urls.get(index);
             threadPool.execute(() -> {
-                FetchResult result = fetcher.fetch(url);
+                FetchResult result = null;  // Declare result outside the try block
+                try {
+                    result = fetcher.fetch(url);  // Attempt to fetch, handle failure within fetch()
+                    System.out.println("Result stored for URL at index " + index + " status: " + result.getSuccess());
+                } catch (Exception e) {
+                    // Log the exception without altering result
+                    // fetch object will return a FetchResult object
+                    // with the error msg and -1 for values.
+
+
+                    System.err.println("Error fetching URL at index " + index + ": " + e.getMessage());
+                }
                 synchronized (resultsMap) {
-                    resultsMap.put(index, result);
-                    System.out.println("Result stored for URL at index " + index + " status: " + result.getSuccess()); // Synchronize writes to ensure thread safety
+                    resultsMap.put(index, result);  // Store the result, successful or not
                 }
             });
         }
         threadPool.shutdown();
     }
+
 
     /**
      * Retrieves the ordered list of fetch results.
