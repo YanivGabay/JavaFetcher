@@ -7,7 +7,7 @@ I used a composite pattern for the formatting, so depend on the user input of co
 so a fetcher will return a fetch result object, than we can print what we want from that object using the composite formatter which will format our output.
 
 You can visit:
-[JavaDocSite](docs/index.html) for the auto generated documentation
+[JavaDocSite](docs/index.html) for the auto generated documentation - a static index.html file, you need to fork to view its content
 
 
 this uml diagram is not finished yet
