@@ -1,16 +1,40 @@
 
 ## Yaniv Gabay 205745615
 
-this is the crawler project in java.
-I used a fetcher factory, where we can easily create fetchers depend on the wanted fetcher.
-I used a composite pattern for the formatting, so depend on the user input of command we will create the according composite formatter using the formatter factory
-so a fetcher will return a fetch result object, than we can print what we want from that object using the composite formatter which will format our output.
+### Project Overview
 
-You can visit:
-[JavaDocSite](docs/index.html) for the auto generated documentation - a static index.html file, you need to fork to view its content
+This project is a Java-based crawler program that allows users to fetch and format information from URLs specified in a file. The program offers flexibility through its fetcher factory and formatter factory mechanisms.
 
+#### Purpose
+The program processes URLs from a given file using a thread pool. Each URL is fetched using a fetcher, and the results are formatted and presented based on the user's specified commands. The program currently has an image fetcher implemented but can easily accommodate new fetchers like a text fetcher.
 
-this uml diagram is not finished yet
+#### Input
+- **Commands**: A combination of `{s, t, u, m}` which stands for different formatting options.
+- **Number of Threads**: Specifies the thread pool size.
+- **File Path**: Path to a file containing the URLs.
+
+### Design
+
+#### Fetcher
+The fetcher component fetches URLs and returns a result object. The fetcher factory facilitates easy creation of new fetchers, such as image fetcher, text fetcher, etc.
+
+#### Formatter
+The formatter component formats the fetch result based on the user’s input. The composite pattern is used to combine multiple formatting options, which include:
+- **s**: Size formatting.
+- **t**: Time formatting.
+- **u**: URL formatting.
+- **m**: Mime type formatting.
+
+The formatter factory creates composite formatters based on the specified commands.
+
+#### Thread Pool
+The program employs a thread pool to manage concurrent fetching of URLs, enhancing efficiency.
+Size of it is determined by the user input via argv.
+
+### Documentation
+
+For detailed, auto-generated documentation, you can visit [JavaDocSite](docs/index.html).
+
 ```mermaid
 classDiagram
     class Main {
