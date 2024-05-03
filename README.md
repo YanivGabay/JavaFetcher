@@ -12,6 +12,7 @@ The program processes URLs from a given file using a thread pool. Each URL is fe
 - **Commands**: A combination of `{s, t, u, m}` which stands for different formatting options.
 - **Number of Threads**: Specifies the thread pool size.
 - **File Path**: Path to a file containing the URLs.
+- **Example**: stu 5 text.txt
 
 ### Design
 
