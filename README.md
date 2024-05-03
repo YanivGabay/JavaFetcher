@@ -1,10 +1,13 @@
 
-## yaniv gabay 205745615
+## Yaniv Gabay 205745615
 
 this is the crawler project in java.
-i used a fetcher factory, where we can easily create fetchers depend on the wanted fetcher.
-i used a comoposite pattern for the formatting, so depend on the user input of command we will create the according comoposite formatter using the foramtter factory
+I used a fetcher factory, where we can easily create fetchers depend on the wanted fetcher.
+I used a composite pattern for the formatting, so depend on the user input of command we will create the according composite formatter using the formatter factory
 so a fetcher will return a fetch result object, than we can print what we want from that object using the composite formatter which will format our output.
+
+You can visit:
+[JavaDocSite](docs/index.html) for the auto generated documentation
 
 
 this uml diagram is not finished yet
