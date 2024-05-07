@@ -32,6 +32,10 @@ The formatter factory creates composite formatters based on the specified comman
 The program employs a thread pool to manage concurrent fetching of URLs, enhancing efficiency.
 Size of it is determined by the user input via argv.
 
+#### Python Script
+Created a small script using BeatifulSoup, to generate text file as need for input.
+You can add different urls/headers etc.
+
 ### Documentation
 
 For detailed, auto-generated documentation, you can visit [JavaDocSite](docs/index.html).
