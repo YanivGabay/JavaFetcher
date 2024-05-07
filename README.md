@@ -38,7 +38,7 @@ You can add different urls/headers etc.
 
 ### Documentation
 
-For detailed, auto-generated documentation, you can visit [JavaDocSite](docs/index.html).
+For detailed, auto-generated documentation, you can visit [JavaDocSite](docs/index.html) (assuming you forked).
 
 ```mermaid
 classDiagram
